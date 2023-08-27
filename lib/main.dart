@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hygrowmon/di/injection/injection.dart';
+import 'package:flutter_hygrowmon/router/app_router.dart';
 
 void main() {
   configureDependencies();
@@ -17,7 +18,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(
+        body: AppRouter(),
+      ),
     );
   }
 }
