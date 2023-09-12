@@ -1,12 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hygrowmon/di/injection.dart';
 import 'package:flutter_hygrowmon/router/app_router.dart';
 
 import 'theme_data/AppColor.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   configureDependencies();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Agrisolute',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

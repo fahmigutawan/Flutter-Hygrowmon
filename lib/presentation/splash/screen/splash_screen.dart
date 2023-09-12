@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hygrowmon/router/routes.dart';
 import 'package:flutter_hygrowmon/theme_data/AppColor.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../controller/splash_controller.dart';
 
@@ -14,16 +16,26 @@ class SplashScreen extends StatelessWidget {
     Timer(
       Duration(seconds: 2),
       () => {
-
+        if(controller.isFirstTime()){
+          context.pushReplacement(Routes.Onboarding)
+        }else{
+          if(controller.isLogin()){
+            //ENTER DASHBOARD
+          }else{
+            //ENTER LOGIN
+          }
+        }
       },
     );
 
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
-        child: Text("CENTERED LOGO"),
+        child: Image.asset(
+            'assets/images/logo_agrisolute.png'
+        ),
       ),
-      backgroundColor: AppColor.Green,
+      backgroundColor: AppColor.White,
     );
   }
 }

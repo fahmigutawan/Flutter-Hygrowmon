@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "575858181196",
+    "project_id": "hygrowmon",
+    "storage_bucket": "hygrowmon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575858181196:android:2b3cfff6f8ba5dcef4e0e9",
+        "android_client_info": {
+          "package_name": "com.example.hygrowmon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575858181196-v9io35l9oru034darnvqqpet85btamf1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hygrowmon",
+            "certificate_hash": "9f272c087feb3406626b4e1361a98f58e798325f"
+          }
+        },
+        {
+          "client_id": "575858181196-fp76g81nlnbnjp3v3vqujgtei6p8mnbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0dXTYnm6CUErjMDQZ2V8qVN92UNWTd-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575858181196-fp76g81nlnbnjp3v3vqujgtei6p8mnbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
