@@ -20,24 +20,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Agrisolute',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Scaffold(
-              backgroundColor: AppColor.Green,
-              body: SafeArea(
-                child: AppRouter(),
-              ),
+            return SafeArea(
+              child: AppRouter(),
             );
           } else {
-            return Scaffold(
-              body: Container(
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(),
-              ),
+            return Container(
+              alignment: Alignment.center,
+              child: CircularProgressIndicator(),
             );
           }
         },

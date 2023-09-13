@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/screen/widget/onboarding_titledescription.dart';
+import 'package:flutter_hygrowmon/router/routes.dart';
 import 'package:flutter_hygrowmon/theme_data/AppColor.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'onboarding_data.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -35,7 +37,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return PageView.builder(
       controller: pageController,
-      itemBuilder: (context, index) => Scaffold(
+      itemBuilder: (context, index) => WillPopScope(
+        child: Scaffold(
           backgroundColor: AppColor.Green,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,15 +59,62 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               Padding(
                 padding: EdgeInsets.all(32),
-                child: ElevatedButton(
-                  onPressed: () => {
-                    pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn)
-                  },
-                  child: Text("CLICK ME"),
+                child: Column(
+                  children: [
+                    Container(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (index < (datas.length - 1)) {
+                            pageController.nextPage(
+                                duration: Duration(milliseconds: 300),
+                                curve: Curves.easeIn);
+                          } else {
+                            controller.setFirstTimeState();
+                            if (controller.isLogin()) {
+                              context.pushReplacement(Routes.Dashboard);
+                            } else {
+                              context.pushReplacement(Routes.Login);
+                            }
+                          }
+                        },
+                        child: Text((index == (datas.length - 1))
+                            ? "Lewati"
+                            : "Selanjutnya"),
+                      ),
+                      width: double.infinity,
+                    ),
+                    (index < (datas.length - 1))
+                        ? TextButton(
+                            onPressed: () {
+                              controller.setFirstTimeState();
+                              if (controller.isLogin()) {
+                                context.pushReplacement(Routes.Dashboard);
+                              } else {
+                                context.pushReplacement(Routes.Login);
+                              }
+                            },
+                            child: Text(
+                              "Lewati",
+                              style: TextStyle(color: AppColor.White),
+                            ),
+                          )
+                        : Container()
+                  ],
                 ),
               ),
             ],
-          )),
+          ),
+        ),
+        onWillPop: () async {
+          if (index == 0) return true;
+
+          pageController.previousPage(
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeIn,
+          );
+          return false;
+        },
+      ),
       itemCount: datas.length,
     );
   }
