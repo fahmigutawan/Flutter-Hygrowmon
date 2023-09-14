@@ -7,15 +7,19 @@ class Repository {
   final SharedPreferences pref = locator.get<SharedPreferences>();
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  bool isLogin(){
+  bool isLogin() {
     return auth.currentUser != null;
   }
 
-  void saveFirstTimeState(bool state){
+  void saveFirstTimeState(bool state) {
     pref.setBool("first_time", state);
   }
 
-  bool getFirstTimeState(){
+  bool getFirstTimeState() {
     return pref.getBool("first_time") ?? true;
+  }
+
+  Future<UserCredential> login(String email, String password) async {
+    return await auth.signInWithEmailAndPassword(email: email, password: password);
   }
 }

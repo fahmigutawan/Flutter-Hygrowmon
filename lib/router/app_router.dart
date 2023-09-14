@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hygrowmon/presentation/login/bloc/login_bloc.dart';
+import 'package:flutter_hygrowmon/presentation/login/bloc/login_state.dart';
 import 'package:flutter_hygrowmon/presentation/login/controller/login_controller.dart';
 import 'package:flutter_hygrowmon/presentation/login/screen/login_screen.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/controller/onboarding_controller.dart';
@@ -77,7 +80,7 @@ class _AppRouterState extends State<AppRouter> {
             path: Routes.Login,
             builder: (context, state) => GetBuilder(
               init: LoginController(),
-              builder: (controller) => LoginScreen(),
+              builder: (_) => LoginScreen(),
             ),
           ),
         ],
