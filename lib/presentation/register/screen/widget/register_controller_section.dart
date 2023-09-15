@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hygrowmon/presentation/register/bloc/register_bloc.dart';
+import 'package:flutter_hygrowmon/presentation/register/bloc/register_event.dart';
 import 'package:flutter_hygrowmon/presentation/register/controller/register_controller.dart';
 
 import '../../../../helper/snackbar_manager.dart';
 import '../../../../theme_data/AppColor.dart';
 import '../../../../theme_data/AppDecoration.dart';
+import '../../bloc/register_state.dart';
 
 class RegisterControllerSection extends StatefulWidget {
   RegisterController controller;
@@ -57,16 +61,14 @@ class _RegisterControllerSectionState extends State<RegisterControllerSection> {
             style: TextStyle(color: AppColor.White),
           ),
           DropdownButtonFormField(
-            items: ["Petani", "Pembeli"]
-                .map(
-                  (String e) => DropdownMenuItem(
-                    value: e,
-                    child: Text(e),
-                  ),
-                )
+            items: controller.roles
+                .map((e) => DropdownMenuItem(
+                      child: Text(e.word),
+                      value: e,
+                    ))
                 .toList(),
-            onChanged: (s) {
-              controller.roleController.text = s!;
+            onChanged: (item) {
+              controller.roleIdController.text = item?.role_id ?? "";
             },
             dropdownColor: Colors.blueGrey,
             iconEnabledColor: AppColor.White,
@@ -115,7 +117,7 @@ class _RegisterControllerSectionState extends State<RegisterControllerSection> {
                   return;
                 }
 
-                if(controller.passwordNotMatchError().isNotEmpty){
+                if (controller.passwordNotMatchError().isNotEmpty) {
                   SnackbarManager.showSnackbarNormal(
                     controller.passwordNotMatchError(),
                     context,
@@ -123,7 +125,14 @@ class _RegisterControllerSectionState extends State<RegisterControllerSection> {
                   return;
                 }
 
-                //Call register function EXACTLY here
+                context.read<RegisterBloc>().add(
+                      StartRegister(
+                          controller.emailController.text,
+                          controller.passwordController.text,
+                          controller.nameController.text,
+                          controller.noTelpController.text,
+                          controller.roleIdController.text),
+                    );
               } else {
                 SnackbarManager.showSnackbarNormal(
                   "Masukkan data dengan benar",

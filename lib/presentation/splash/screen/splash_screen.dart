@@ -20,7 +20,7 @@ class SplashScreen extends StatelessWidget {
           context.pushReplacement(Routes.Onboarding)
         }else{
           if(controller.isLogin()){
-            context.pushReplacement(Routes.Login) //CHANGE THIS LATER TO DASHBOARD
+            context.pushReplacement(Routes.Dashboard)
           }else{
             context.pushReplacement(Routes.Login)
           }

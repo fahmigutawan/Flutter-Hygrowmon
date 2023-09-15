@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hygrowmon/helper/snackbar_manager.dart';
+import 'package:flutter_hygrowmon/presentation/register/bloc/register_event.dart';
 import 'package:flutter_hygrowmon/presentation/register/bloc/register_state.dart';
 import 'package:flutter_hygrowmon/presentation/register/controller/register_controller.dart';
 import 'package:flutter_hygrowmon/presentation/register/screen/widget/register_controller_section.dart';
@@ -8,6 +10,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../router/routes.dart';
 import '../../../theme_data/AppColor.dart';
+import '../../../widgets/fullscreen_loading.dart';
 import '../bloc/register_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -18,29 +21,31 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: BlocProvider<RegisterBloc>(
-        create: (context) => RegisterBloc(RegisterInitial()),
+        create: (context) =>
+            RegisterBloc(RegisterInitial())..add(OnRoleDataLoad()),
         child: BlocBuilder<RegisterBloc, RegisterState>(
           builder: (context, state) => Stack(
             children: [
               BlocListener<RegisterBloc, RegisterState>(
                 listener: (context, state) {
-                  // if (state is LoginError) {
-                  //   SnackbarManager.showSnackbarNormal(
-                  //     state.errMessage,
-                  //     context,
-                  //   );
-                  // }
-                  //
-                  // if (state is LoginSuccess) {
-                  //   SnackbarManager.showSnackbarNormal(
-                  //     "Berhasil login sebagai ${state.user.email}",
-                  //     context,
-                  //   );
-                  //
-                  //   context.go(Routes.Dashboard);
-                  // }
+                  if (state is RoleSuccess) {
+                    controller.roles.addAll(state.data);
+                  }
+
+                  if (state is RegisterError) {
+                    SnackbarManager.showSnackbarNormal(state.msg, context);
+                  }
+
+                  if (state is RegisterSuccess) {
+                    SnackbarManager.showSnackbarNormal(
+                      "Registrasi berhasil sebagai ${state.data.user?.email}",
+                      context,
+                    );
+
+                    context.go(Routes.Dashboard);
+                  }
                 },
                 child: Container(
                   color: AppColor.Green,
@@ -79,7 +84,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // if (state is LoginLoading) FullscreenLoadingBox(),
+              if (state is Loading) FullscreenLoadingBox(),
             ],
           ),
         ),
