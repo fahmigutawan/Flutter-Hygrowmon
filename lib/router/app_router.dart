@@ -6,12 +6,14 @@ import 'package:flutter_hygrowmon/presentation/login/controller/login_controller
 import 'package:flutter_hygrowmon/presentation/login/screen/login_screen.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/screen/onboarding_screen.dart';
+import 'package:flutter_hygrowmon/presentation/register/screen/register_screen.dart';
 import 'package:flutter_hygrowmon/presentation/splash/controller/splash_controller.dart';
 import 'package:flutter_hygrowmon/router/routes.dart';
 import 'package:flutter_hygrowmon/presentation/splash/screen/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
+import '../presentation/register/controller/register_controller.dart';
 import '../theme_data/AppColor.dart';
 
 class AppRouter extends StatefulWidget {
@@ -81,6 +83,13 @@ class _AppRouterState extends State<AppRouter> {
             builder: (context, state) => GetBuilder(
               init: LoginController(),
               builder: (_) => LoginScreen(),
+            ),
+          ),
+          GoRoute(
+            path: Routes.Register,
+            builder: (context, state) => GetBuilder(
+              init: RegisterController(),
+              builder: (_) => RegisterScreen(),
             ),
           ),
         ],

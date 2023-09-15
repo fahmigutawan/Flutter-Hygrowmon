@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'AppColor.dart';
 
-class AppDecoration{
+class AppDecoration {
   static const InputDecoration outlinedTextField = InputDecoration(
     border: OutlineInputBorder(
       borderSide: BorderSide(
@@ -17,6 +17,21 @@ class AppDecoration{
   );
 
   static const InputDecoration outlinedTextFieldInverted = InputDecoration(
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.white60,
+          width: 2,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: AppColor.White,
+          width: 2,
+        ),
+      ),
+      labelStyle: TextStyle(color: AppColor.White));
+
+  static const InputDecoration outlinedDropdownInverted = InputDecoration(
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide(
         color: Colors.white60,
@@ -29,8 +44,6 @@ class AppDecoration{
         width: 2,
       ),
     ),
-    labelStyle: TextStyle(
-      color: AppColor.White
-    )
+    labelStyle: TextStyle(color: AppColor.White)
   );
 }

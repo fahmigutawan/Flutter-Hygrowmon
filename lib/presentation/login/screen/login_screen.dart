@@ -4,14 +4,14 @@ import 'package:flutter_hygrowmon/helper/snackbar_manager.dart';
 import 'package:flutter_hygrowmon/presentation/login/bloc/login_bloc.dart';
 import 'package:flutter_hygrowmon/presentation/login/bloc/login_state.dart';
 import 'package:flutter_hygrowmon/presentation/login/controller/login_controller.dart';
+import 'package:flutter_hygrowmon/presentation/login/screen/widget/login_controller_section.dart';
 import 'package:flutter_hygrowmon/theme_data/AppDecoration.dart';
-import 'package:flutter_hygrowmon/widgets/fullscreen_loading.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logger/logger.dart';
 
 import '../../../router/routes.dart';
 import '../../../theme_data/AppColor.dart';
+import '../../../widgets/fullscreen_loading.dart';
 import '../bloc/login_event.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -27,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: BlocProvider<LoginBloc>(
         create: (context) => LoginBloc(LoginInitial()),
         child: BlocBuilder<LoginBloc, LoginState>(
@@ -41,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     );
                   }
 
-                  if(state is LoginSuccess){
+                  if (state is LoginSuccess) {
                     SnackbarManager.showSnackbarNormal(
                       "Berhasil login sebagai ${state.user.email}",
                       context,
@@ -70,54 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 24),
-                            child: Wrap(
-                              runSpacing: 16,
-                              children: [
-                                TextField(
-                                  controller: controller.emailController,
-                                  cursorColor: AppColor.White,
-                                  decoration: AppDecoration
-                                      .outlinedTextFieldInverted
-                                      .copyWith(labelText: "Email"),
-                                  style: TextStyle(color: AppColor.White),
-                                ),
-                                TextField(
-                                  controller: controller.passwordController,
-                                  cursorColor: AppColor.White,
-                                  decoration: AppDecoration
-                                      .outlinedTextFieldInverted
-                                      .copyWith(labelText: "Password"),
-                                  style: TextStyle(color: AppColor.White),
-                                  obscureText: true,
-                                ),
-                                Container(
-                                  width: double.infinity,
-                                  alignment: Alignment.centerRight,
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "Lupa kata sandi",
-                                      style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        color: AppColor.LightBrown,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    context.read<LoginBloc>().add(StartLogin(
-                                          controller.emailController.text,
-                                          controller.passwordController.text,
-                                        ));
-                                  },
-                                  child: Text("Masuk"),
-                                )
-                              ],
-                            ),
-                          ),
+                          LoginControllerSection(controller: controller),
                         ],
                       ),
                       Padding(
@@ -149,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              // if (state is LoginLoading) FullscreenLoadingBox(),
+              if (state is LoginLoading) FullscreenLoadingBox(),
             ],
           ),
         ),
