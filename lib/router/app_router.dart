@@ -66,32 +66,40 @@ class _AppRouterState extends State<AppRouter> {
         routes: [
           GoRoute(
             path: Routes.Splash,
-            builder: (context, state) => GetBuilder(
-              init: SplashController(),
-              builder: (controller) => SplashScreen(),
-            ),
+            builder: (context, state) =>
+                GetBuilder(
+                  init: SplashController(),
+                  builder: (controller) => SplashScreen(),
+                ),
           ),
           GoRoute(
             path: Routes.Onboarding,
-            builder: (context, state) => GetBuilder(
-              init: OnboardingController(),
-              builder: (controller) => OnboardingScreen(),
-            ),
+            builder: (context, state) =>
+                GetBuilder(
+                  init: OnboardingController(),
+                  builder: (controller) => OnboardingScreen(),
+                ),
           ),
           GoRoute(
             path: Routes.Login,
-            builder: (context, state) => GetBuilder(
-              init: LoginController(),
-              builder: (_) => LoginScreen(),
-            ),
+            builder: (context, state) =>
+                GetBuilder(
+                  init: LoginController(),
+                  builder: (_) => LoginScreen(),
+                ),
           ),
           GoRoute(
             path: Routes.Register,
-            builder: (context, state) => GetBuilder(
-              init: RegisterController(),
-              builder: (_) => RegisterScreen(),
-            ),
+            builder: (context, state) =>
+                GetBuilder(
+                  init: RegisterController(),
+                  builder: (_) => RegisterScreen(),
+                ),
           ),
+          GoRoute(
+            path: Routes.Dashboard,
+            builder: (context, state) => GetBuilder(init:, builder:,),
+          )
         ],
       ),
     );
