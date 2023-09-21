@@ -48,58 +48,61 @@ class _LoginScreenState extends State<LoginScreen> {
                       context,
                     );
 
-                    context.go(Routes.Dashboard);
+                    // context.pushReplacement(Routes.Dashboard) USE THIS INSTEAD IF BEEN READY
+                    context.go(Routes.Monitoring);
                   }
                 },
                 child: Container(
                   color: AppColor.Green,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Center(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 84),
-                              child: Text(
-                                "Agrisolute",
-                                style: TextStyle(
-                                  fontSize: 34,
-                                  color: AppColor.White,
-                                  fontFamily: "Crete Round Regular",
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 84),
+                                child: Text(
+                                  "Agrisolute",
+                                  style: TextStyle(
+                                    fontSize: 34,
+                                    color: AppColor.White,
+                                    fontFamily: "Crete Round Regular",
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          LoginControllerSection(controller: controller),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 48),
-                        child: Wrap(
-                          direction: Axis.horizontal,
-                          runSpacing: 8,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Text(
-                              "Belum memiliki akun?",
-                              style: TextStyle(color: AppColor.White),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                context.push(Routes.Register);
-                              },
-                              child: Text(
-                                "Daftar",
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: AppColor.LightBrown),
-                              ),
-                            )
+                            LoginControllerSection(controller: controller),
                           ],
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 48),
+                          child: Wrap(
+                            direction: Axis.horizontal,
+                            runSpacing: 8,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                "Belum memiliki akun?",
+                                style: TextStyle(color: AppColor.White),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  context.push(Routes.Register);
+                                },
+                                child: Text(
+                                  "Daftar",
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: AppColor.LightBrown),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

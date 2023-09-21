@@ -44,6 +44,8 @@ dependencies:
   logger: ^2.0.2
   flutter_spinkit: ^5.2.0
   cloud_firestore: ^4.9.1
+  mqtt_client: ^9.8.1
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,11 @@ flutter:
     - assets/images/onboarding_1.png
     - assets/images/onboarding_2.png
     - assets/images/onboarding_3.png
+    - assets/images/monitoring_kelembaban_tanah.png
+    - assets/images/monitoring_kelembaban_udara.png
+    - assets/images/monitoring_ph_air.png
+    - assets/images/monitoring_suhu.png
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

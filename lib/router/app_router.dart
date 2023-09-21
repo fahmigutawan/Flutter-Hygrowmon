@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hygrowmon/presentation/dashboard/controller/dashboard_controller.dart';
+import 'package:flutter_hygrowmon/presentation/dashboard/screen/dashboard_screen.dart';
 import 'package:flutter_hygrowmon/presentation/login/bloc/login_bloc.dart';
 import 'package:flutter_hygrowmon/presentation/login/bloc/login_state.dart';
 import 'package:flutter_hygrowmon/presentation/login/controller/login_controller.dart';
 import 'package:flutter_hygrowmon/presentation/login/screen/login_screen.dart';
+import 'package:flutter_hygrowmon/presentation/monitoring/controller/monitoring_controller.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/screen/onboarding_screen.dart';
 import 'package:flutter_hygrowmon/presentation/register/screen/register_screen.dart';
@@ -13,6 +16,7 @@ import 'package:flutter_hygrowmon/presentation/splash/screen/splash_screen.dart'
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
+import '../presentation/monitoring/screen/monitoring_screen.dart';
 import '../presentation/register/controller/register_controller.dart';
 import '../theme_data/AppColor.dart';
 
@@ -98,8 +102,18 @@ class _AppRouterState extends State<AppRouter> {
           ),
           GoRoute(
             path: Routes.Dashboard,
-            builder: (context, state) => GetBuilder(init:, builder:,),
-          )
+            builder: (context, state) => GetBuilder(
+              init: DashboardController(),
+              builder: (_) => DashboardScreen(),
+            ),
+          ),
+          GoRoute(
+            path: Routes.Monitoring,
+            builder: (context, state) => GetBuilder(
+              init: MonitoringController(),
+              builder: (_) => MonitoringScreen(),
+            ),
+          ),
         ],
       ),
     );

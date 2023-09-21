@@ -7,7 +7,6 @@ import 'package:logger/logger.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Repository repo = locator.get<Repository>();
-  Logger l = Logger();
 
   LoginBloc(super.initialState) {
     on<StartLogin>(

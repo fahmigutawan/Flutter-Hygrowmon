@@ -40,69 +40,71 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       itemBuilder: (context, index) => WillPopScope(
         child: Scaffold(
           backgroundColor: AppColor.Green,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  OnboardingTitleDescription(
-                    datas[index].title,
-                    datas[index].description,
-                    index,
-                    datas.length,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 64, right: 64, top: 64),
-                    child: Image.asset(datas[index].imgRef),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.all(32),
-                child: Column(
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
                   children: [
-                    Container(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (index < (datas.length - 1)) {
-                            pageController.nextPage(
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.easeIn);
-                          } else {
-                            controller.setFirstTimeState();
-                            if (controller.isLogin()) {
-                              context.pushReplacement(Routes.Dashboard);
-                            } else {
-                              context.pushReplacement(Routes.Login);
-                            }
-                          }
-                        },
-                        child: Text((index == (datas.length - 1))
-                            ? "Lewati"
-                            : "Selanjutnya"),
-                      ),
-                      width: double.infinity,
+                    OnboardingTitleDescription(
+                      datas[index].title,
+                      datas[index].description,
+                      index,
+                      datas.length,
                     ),
-                    (index < (datas.length - 1))
-                        ? TextButton(
-                            onPressed: () {
+                    Padding(
+                      padding: EdgeInsets.only(left: 64, right: 64, top: 64),
+                      child: Image.asset(datas[index].imgRef),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(32),
+                  child: Column(
+                    children: [
+                      Container(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (index < (datas.length - 1)) {
+                              pageController.nextPage(
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.easeIn);
+                            } else {
                               controller.setFirstTimeState();
                               if (controller.isLogin()) {
                                 context.pushReplacement(Routes.Dashboard);
                               } else {
                                 context.pushReplacement(Routes.Login);
                               }
-                            },
-                            child: Text(
-                              "Lewati",
-                              style: TextStyle(color: AppColor.White),
-                            ),
-                          )
-                        : Container()
-                  ],
+                            }
+                          },
+                          child: Text((index == (datas.length - 1))
+                              ? "Lewati"
+                              : "Selanjutnya"),
+                        ),
+                        width: double.infinity,
+                      ),
+                      (index < (datas.length - 1))
+                          ? TextButton(
+                        onPressed: () {
+                          controller.setFirstTimeState();
+                          if (controller.isLogin()) {
+                            context.pushReplacement(Routes.Dashboard);
+                          } else {
+                            context.pushReplacement(Routes.Login);
+                          }
+                        },
+                        child: Text(
+                          "Lewati",
+                          style: TextStyle(color: AppColor.White),
+                        ),
+                      )
+                          : Container()
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         onWillPop: () async {

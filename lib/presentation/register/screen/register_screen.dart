@@ -44,7 +44,8 @@ class RegisterScreen extends StatelessWidget {
                       context,
                     );
 
-                    context.go(Routes.Dashboard);
+                    // context.pushReplacement(Routes.Dashboard) USE THIS INSTEAD IF BEEN READY
+                    context.go(Routes.Monitoring);
                   }
                 },
                 child: Container(
