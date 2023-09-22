@@ -1,5 +1,5 @@
 abstract class MonitoringEvent{}
 
-class SubscribeTempMonitoring extends MonitoringEvent{}
+class SubscribeMonitoring extends MonitoringEvent{}
 
-class SubscribeHumMonitoring extends MonitoringEvent{}
+class ConnectMqtt extends MonitoringEvent{}

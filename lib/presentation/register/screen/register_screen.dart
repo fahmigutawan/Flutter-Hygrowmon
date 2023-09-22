@@ -21,7 +21,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      backgroundColor: AppColor.Green,
       body: BlocProvider<RegisterBloc>(
         create: (context) =>
             RegisterBloc(RegisterInitial())..add(OnRoleDataLoad()),
@@ -48,40 +48,37 @@ class RegisterScreen extends StatelessWidget {
                     context.go(Routes.Monitoring);
                   }
                 },
-                child: Container(
-                  color: AppColor.Green,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        RegisterControllerSection(controller: controller),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 48),
-                          child: Wrap(
-                            direction: Axis.horizontal,
-                            runSpacing: 8,
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Text(
-                                "Telah memiliki akun?",
-                                style: TextStyle(color: AppColor.White),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RegisterControllerSection(controller: controller),
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 48),
+                        child: Wrap(
+                          direction: Axis.horizontal,
+                          runSpacing: 8,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(
+                              "Telah memiliki akun?",
+                              style: TextStyle(color: AppColor.White),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                context.push(Routes.Login);
+                              },
+                              child: Text(
+                                "Masuk",
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: AppColor.LightBrown),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  context.push(Routes.Login);
-                                },
-                                child: Text(
-                                  "Masuk",
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: AppColor.LightBrown),
-                                ),
-                              )
-                            ],
-                          ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

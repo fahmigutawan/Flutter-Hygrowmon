@@ -1,42 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hygrowmon/theme_data/AppColor.dart';
+import 'package:marquee/marquee.dart';
 
 class MonitoringItem extends StatelessWidget {
   String img;
   String data;
   String label;
+  double width;
 
   MonitoringItem(
-      {super.key, required this.img, required this.data, required this.label});
+      {super.key,
+      required this.img,
+      required this.data,
+      required this.label,
+      required this.width});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: AppColor.White,
       shadowColor: Colors.black,
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
+      margin: EdgeInsets.all(4),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 16),
+            child: Image.asset(
               this.img,
-              height: 48,
+              height: 36,
               fit: BoxFit.contain,
             ),
-            Column(
+          ),
+          Expanded(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   this.label,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 10),
                 ),
-                Text(this.data),
+                Text(
+                  this.data,
+                  style: TextStyle(fontSize: 14),
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

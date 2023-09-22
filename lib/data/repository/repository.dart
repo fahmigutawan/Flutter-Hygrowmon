@@ -34,69 +34,12 @@ class Repository {
     return true;
   }
 
-  void subscribeMqttTopicTemp(
+  void subscribeMqttTopic(
     Function(String) onUpdated,
   ) {
     mqttClient.subscribe(
-      dotenv.env["MQTT_TOPIC_TEMP"] ?? "",
+      dotenv.env["MQTT_TOPIC"] ?? "",
       MqttQos.exactlyOnce,
-    );
-
-    mqttClient.updates!.listen(
-      (List<MqttReceivedMessage<MqttMessage?>>? c) {
-        final recMess = c![0].payload as MqttPublishMessage;
-        final pt = MqttPublishPayload.bytesToStringAsString(
-          recMess.payload.message,
-        );
-        onUpdated(pt);
-      },
-    );
-  }
-
-  void subscribeMqttTopicHum(
-    Function(String) onUpdated,
-  ) {
-    mqttClient.subscribe(
-      dotenv.env["MQTT_TOPIC_HUM"] ?? "",
-      MqttQos.exactlyOnce,
-    );
-
-    mqttClient.updates!.listen(
-      (List<MqttReceivedMessage<MqttMessage?>>? c) {
-        final recMess = c![1].payload as MqttPublishMessage;
-        final pt = MqttPublishPayload.bytesToStringAsString(
-          recMess.payload.message,
-        );
-        onUpdated(pt);
-      },
-    );
-  }
-
-  void subscribeMqttTopicPh(
-    Function(String) onUpdated,
-  ) {
-    mqttClient.subscribe(
-      dotenv.env["MQTT_TOPIC_PH"] ?? "",
-      MqttQos.atMostOnce,
-    );
-
-    mqttClient.updates!.listen(
-      (List<MqttReceivedMessage<MqttMessage?>>? c) {
-        final recMess = c![0].payload as MqttPublishMessage;
-        final pt = MqttPublishPayload.bytesToStringAsString(
-          recMess.payload.message,
-        );
-        onUpdated(pt);
-      },
-    );
-  }
-
-  void subscribeMqttTopicTanah(
-    Function(String) onUpdated,
-  ) {
-    mqttClient.subscribe(
-      dotenv.env["MQTT_TOPIC_TANAH"] ?? "",
-      MqttQos.atMostOnce,
     );
 
     mqttClient.updates!.listen(

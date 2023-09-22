@@ -27,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.Green,
       resizeToAvoidBottomInset: false,
       body: BlocProvider<LoginBloc>(
         create: (context) => LoginBloc(LoginInitial()),
@@ -52,9 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     context.go(Routes.Monitoring);
                   }
                 },
-                child: Container(
-                  color: AppColor.Green,
-                  child: SingleChildScrollView(
+                child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -104,7 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-                ),
               ),
               if (state is LoginLoading) FullscreenLoadingBox(),
             ],
