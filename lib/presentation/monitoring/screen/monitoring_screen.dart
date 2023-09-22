@@ -60,7 +60,46 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
                         child: MonitoringItem(
                           img: "assets/images/monitoring_suhu.png",
                           data: snapshot.data ?? "...",
-                          label: "SUHU",
+                          label: "Suhu",
+                        ),
+                      );
+                    },
+                  ),
+                  StreamBuilder(
+                    stream: bloc.tempDataStream,
+                    builder: (context, snapshot) {
+                      return Padding(
+                        padding: EdgeInsets.all(4),
+                        child: MonitoringItem(
+                          img: "assets/images/monitoring_kelembaban_tanah.png",
+                          data: snapshot.data ?? "...",
+                          label: "Kelembapan Tanah",
+                        ),
+                      );
+                    },
+                  ),
+                  StreamBuilder(
+                    stream: bloc.tempDataStream,
+                    builder: (context, snapshot) {
+                      return Padding(
+                        padding: EdgeInsets.all(4),
+                        child: MonitoringItem(
+                          img: "assets/images/monitoring_ph.png",
+                          data: snapshot.data ?? "...",
+                          label: "pH Air",
+                        ),
+                      );
+                    },
+                  ),
+                  StreamBuilder(
+                    stream: bloc.tempDataStream,
+                    builder: (context, snapshot) {
+                      return Padding(
+                        padding: EdgeInsets.all(4),
+                        child: MonitoringItem(
+                          img: "assets/images/monitoring_kelembaban_udara.png",
+                          data: snapshot.data ?? "...",
+                          label: "Kelembapan Udara",
                         ),
                       );
                     },
