@@ -1,5 +1,5 @@
 name: flutter_hygrowmon
-description: A new Flutter project.
+description: Agrisolute Project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -47,6 +47,7 @@ dependencies:
   mqtt_client: ^9.8.1
   flutter_dotenv: ^5.1.0
   marquee: ^2.2.3
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,24 @@ dev_dependencies:
 
   injectable_generator: ^2.1.2
   build_runner: ^2.3.3
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_agrisolute.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/logo_agrisolute.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/logo_agrisolute.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/images/logo_agrisolute.png"
 
 flutter:
 
