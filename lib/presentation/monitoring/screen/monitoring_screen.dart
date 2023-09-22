@@ -62,7 +62,7 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
                           child: MonitoringItem(
                             width: width/3,
                             img: "assets/images/monitoring_suhu.png",
-                            data: snapshot.data![0].toString() ?? "...",
+                            data: "${snapshot.data![0].toString()}°C" ?? "...",
                             label: "Suhu",
                           ),
                         ),
@@ -72,7 +72,7 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
                             width: width/3,
                             img:
                             "assets/images/monitoring_kelembaban_udara.png",
-                            data: snapshot.data![1].toString() ?? "...",
+                            data: "${snapshot.data![1].toString()}%" ?? "...",
                             label: "Kelembapan Udara",
                           ),
                         ),
@@ -82,7 +82,7 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
                             width: width/3,
                             img:
                             "assets/images/monitoring_kelembaban_tanah.png",
-                            data: snapshot.data![2].toString() ?? "...",
+                            data: "${snapshot.data![2].toString()}%" ?? "...",
                             label: "Kelembapan Air",
                           ),
                         ),
