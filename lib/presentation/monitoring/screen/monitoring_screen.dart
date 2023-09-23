@@ -83,7 +83,7 @@ class _MonitoringScreenState extends State<MonitoringScreen> {
                             img:
                             "assets/images/monitoring_kelembaban_tanah.png",
                             data: "${snapshot.data![2].toString()}%" ?? "...",
-                            label: "Kelembapan Air",
+                            label: "Kelembapan Tanah",
                           ),
                         ),
                         Padding(
