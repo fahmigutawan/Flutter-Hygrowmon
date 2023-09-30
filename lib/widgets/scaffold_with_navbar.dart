@@ -5,23 +5,17 @@ import '../main/bloc/main_bloc.dart';
 import '../main/bloc/main_event.dart';
 import 'navbar.dart';
 
-Widget ScaffoldWithNavbar(MainBloc mainBloc, BuildContext context, Widget widget) {
+Widget ScaffoldWithNavbar(
+    MainBloc mainBloc, BuildContext context, Widget widget) {
   return Scaffold(
-    bottomNavigationBar: StreamBuilder(
-      stream: mainBloc.selectedNavbarRouteStream,
-      builder: (_, snapshot) {
-        if (snapshot.hasData) {
-          debugPrint(snapshot.data.toString());
-          return AppNavbar(
-            snapshot.data ?? "/",
-            (route, index) {
-              mainBloc.add(OnSelectedNavbarChanged(route));
-              context.push(route);
-            },
-          );
-        } else {
-          return Container();
-        }
+    bottomNavigationBar: AppNavbar(
+      GoRouter.of(context)
+          .routerDelegate
+          .currentConfiguration
+          .last
+          .matchedLocation,
+      (route, index) {
+        context.push(route);
       },
     ),
     body: widget,

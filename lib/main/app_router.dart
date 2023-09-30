@@ -85,18 +85,22 @@ class _AppRouterState extends State<AppRouter> {
               GoRoute(
                 parentNavigatorKey: _shellNavigatorKey,
                 path: Routes.Dashboard,
-                builder: (context, state) => GetBuilder(
-                  init: DashboardController(),
-                  builder: (_) => DashboardScreen(),
-                ),
+                builder: (context, state) {
+                  return GetBuilder(
+                    init: DashboardController(),
+                    builder: (_) => DashboardScreen(),
+                  );
+                },
               ),
               GoRoute(
                 parentNavigatorKey: _shellNavigatorKey,
                 path: Routes.Lahanku,
-                builder: (context, state) => GetBuilder(
-                  init: MonitoringController(),
-                  builder: (_) => MonitoringScreen(),
-                ),
+                builder: (context, state) {
+                  return GetBuilder(
+                    init: MonitoringController(),
+                    builder: (_) => MonitoringScreen(),
+                  );
+                },
               ),
               GoRoute(
                 parentNavigatorKey: _shellNavigatorKey,

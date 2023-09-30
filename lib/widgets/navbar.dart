@@ -95,6 +95,9 @@ Widget AppNavbar(
   return NavigationBar(
     selectedIndex: (selectedIndex >= 0) ? selectedIndex : 0,
     destinations: items.map((e) => e.item).toList(),
-    onDestinationSelected: (index) => onItemClicked(items[index].route, index),
+    onDestinationSelected: (index) {
+      debugPrint("DARI MODAL" + selectedRoute);
+      onItemClicked(items[index].route, index);
+    },
   );
 }
