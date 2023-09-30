@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter_hygrowmon/presentation/onboarding/screen/widget/onboarding_titledescription.dart';
-import 'package:flutter_hygrowmon/router/routes.dart';
+import 'package:flutter_hygrowmon/main/routes.dart';
 import 'package:flutter_hygrowmon/theme_data/AppColor.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -72,9 +72,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             } else {
                               controller.setFirstTimeState();
                               if (controller.isLogin()) {
-                                context.pushReplacement(Routes.Dashboard);
+                                context.go(Routes.Dashboard);
                               } else {
-                                context.pushReplacement(Routes.Login);
+                                context.go(Routes.Login);
                               }
                             }
                           },
@@ -89,9 +89,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         onPressed: () {
                           controller.setFirstTimeState();
                           if (controller.isLogin()) {
-                            context.pushReplacement(Routes.Dashboard);
+                            context.go(Routes.Dashboard);
                           } else {
-                            context.pushReplacement(Routes.Login);
+                            context.go(Routes.Login);
                           }
                         },
                         child: Text(

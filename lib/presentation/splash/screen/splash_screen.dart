@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hygrowmon/router/routes.dart';
+import 'package:flutter_hygrowmon/main/routes.dart';
 import 'package:flutter_hygrowmon/theme_data/AppColor.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -17,13 +17,12 @@ class SplashScreen extends StatelessWidget {
       Duration(seconds: 2),
       () => {
         if(controller.isFirstTime()){
-          context.pushReplacement(Routes.Onboarding)
+          context.go(Routes.Onboarding)
         }else{
           if(controller.isLogin()){
-            // context.pushReplacement(Routes.Dashboard) USE THIS INSTEAD IF BEEN READY
-            context.pushReplacement(Routes.Monitoring)
+            context.go(Routes.Dashboard)
           }else{
-            context.pushReplacement(Routes.Login)
+            context.go(Routes.Login)
           }
         }
       },

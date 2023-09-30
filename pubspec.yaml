@@ -94,6 +94,11 @@ flutter:
     - assets/images/monitoring_kelembaban_udara.png
     - assets/images/monitoring_ph_air.png
     - assets/images/monitoring_suhu.png
+    - assets/images/navbar_belanja.png
+    - assets/images/navbar_dashboard.png
+    - assets/images/navbar_lahanku.png
+    - assets/images/navbar_pesan.png
+    - assets/images/navbar_profile.png
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see

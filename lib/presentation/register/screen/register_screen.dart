@@ -8,7 +8,7 @@ import 'package:flutter_hygrowmon/presentation/register/screen/widget/register_c
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../router/routes.dart';
+import '../../../main/routes.dart';
 import '../../../theme_data/AppColor.dart';
 import '../../../widgets/fullscreen_loading.dart';
 import '../bloc/register_bloc.dart';
@@ -44,8 +44,7 @@ class RegisterScreen extends StatelessWidget {
                       context,
                     );
 
-                    // context.pushReplacement(Routes.Dashboard) USE THIS INSTEAD IF BEEN READY
-                    context.go(Routes.Monitoring);
+                    context.go(Routes.Dashboard);
                   }
                 },
                 child: SingleChildScrollView(

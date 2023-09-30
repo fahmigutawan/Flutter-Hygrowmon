@@ -9,7 +9,7 @@ import 'package:flutter_hygrowmon/theme_data/AppDecoration.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../router/routes.dart';
+import '../../../main/routes.dart';
 import '../../../theme_data/AppColor.dart';
 import '../../../widgets/fullscreen_loading.dart';
 import '../bloc/login_event.dart';
@@ -49,8 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       context,
                     );
 
-                    // context.pushReplacement(Routes.Dashboard) USE THIS INSTEAD IF BEEN READY
-                    context.go(Routes.Monitoring);
+                    context.go(Routes.Dashboard);
                   }
                 },
                 child: SingleChildScrollView(

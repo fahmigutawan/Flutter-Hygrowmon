@@ -11,7 +11,7 @@ import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../di/injection.dart';
-import '../../main.dart';
+import '../../main/main.dart';
 
 class Repository {
   final SharedPreferences pref = locator.get<SharedPreferences>();

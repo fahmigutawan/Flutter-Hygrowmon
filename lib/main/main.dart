@@ -1,13 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_hygrowmon/data/repository/repository.dart';
+import 'package:flutter_hygrowmon/main/bloc/main_bloc.dart';
+import 'package:flutter_hygrowmon/main/bloc/main_event.dart';
+import 'package:flutter_hygrowmon/main/bloc/main_state.dart';
+import 'package:flutter_hygrowmon/widgets/navbar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
-import 'firebase_options.dart';
+import '../firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hygrowmon/di/injection.dart';
-import 'package:flutter_hygrowmon/router/app_router.dart';
+import 'package:flutter_hygrowmon/main/app_router.dart';
 
-import 'theme_data/AppColor.dart';
+import '../theme_data/AppColor.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +45,9 @@ class _MyAppState extends State<MyApp> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return SafeArea(
-              child: AppRouter(),
+              child: Scaffold(
+                body: AppRouter(),
+              ),
             );
           } else {
             return SingleChildScrollView(
