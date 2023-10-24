@@ -2,16 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hygrowmon/main/bloc/main_bloc.dart';
 import 'package:flutter_hygrowmon/main/bloc/main_state.dart';
-import 'package:flutter_hygrowmon/presentation/dashboard/controller/dashboard_controller.dart';
-import 'package:flutter_hygrowmon/presentation/dashboard/screen/dashboard_screen.dart';
-import 'package:flutter_hygrowmon/presentation/login/bloc/login_bloc.dart';
-import 'package:flutter_hygrowmon/presentation/login/bloc/login_state.dart';
-import 'package:flutter_hygrowmon/presentation/login/controller/login_controller.dart';
-import 'package:flutter_hygrowmon/presentation/login/screen/login_screen.dart';
 import 'package:flutter_hygrowmon/presentation/monitoring/controller/monitoring_controller.dart';
-import 'package:flutter_hygrowmon/presentation/onboarding/controller/onboarding_controller.dart';
-import 'package:flutter_hygrowmon/presentation/onboarding/screen/onboarding_screen.dart';
-import 'package:flutter_hygrowmon/presentation/register/screen/register_screen.dart';
 import 'package:flutter_hygrowmon/presentation/splash/controller/splash_controller.dart';
 import 'package:flutter_hygrowmon/main/routes.dart';
 import 'package:flutter_hygrowmon/presentation/splash/screen/splash_screen.dart';
@@ -20,7 +11,6 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../presentation/monitoring/screen/monitoring_screen.dart';
-import '../presentation/register/controller/register_controller.dart';
 import '../theme_data/AppColor.dart';
 
 class AppRouter extends StatefulWidget {
@@ -78,56 +68,6 @@ class _AppRouterState extends State<AppRouter> {
         initialLocation: Routes.Splash,
         navigatorKey: _rootNavigatorKey,
         routes: [
-          ShellRoute(
-            navigatorKey: _shellNavigatorKey,
-            builder: (context, state, widget) => ScaffoldWithNavbar(mainBloc, context, widget),
-            routes: [
-              GoRoute(
-                parentNavigatorKey: _shellNavigatorKey,
-                path: Routes.Dashboard,
-                builder: (context, state) {
-                  return GetBuilder(
-                    init: DashboardController(),
-                    builder: (_) => DashboardScreen(),
-                  );
-                },
-              ),
-              GoRoute(
-                parentNavigatorKey: _shellNavigatorKey,
-                path: Routes.Lahanku,
-                builder: (context, state) {
-                  return GetBuilder(
-                    init: MonitoringController(),
-                    builder: (_) => MonitoringScreen(),
-                  );
-                },
-              ),
-              GoRoute(
-                parentNavigatorKey: _shellNavigatorKey,
-                path: Routes.Belanja,
-                builder: (context, state) => GetBuilder(
-                  init: DashboardController(),
-                  builder: (_) => DashboardScreen(),
-                ),
-              ),
-              GoRoute(
-                parentNavigatorKey: _shellNavigatorKey,
-                path: Routes.Pesan,
-                builder: (context, state) => GetBuilder(
-                  init: DashboardController(),
-                  builder: (_) => DashboardScreen(),
-                ),
-              ),
-              GoRoute(
-                parentNavigatorKey: _shellNavigatorKey,
-                path: Routes.Profile,
-                builder: (context, state) => GetBuilder(
-                  init: DashboardController(),
-                  builder: (_) => DashboardScreen(),
-                ),
-              ),
-            ],
-          ),
           GoRoute(
             parentNavigatorKey: _rootNavigatorKey,
             path: Routes.Splash,
@@ -138,26 +78,10 @@ class _AppRouterState extends State<AppRouter> {
           ),
           GoRoute(
             parentNavigatorKey: _rootNavigatorKey,
-            path: Routes.Onboarding,
+            path: Routes.Lahanku,
             builder: (context, state) => GetBuilder(
-              init: OnboardingController(),
-              builder: (controller) => OnboardingScreen(),
-            ),
-          ),
-          GoRoute(
-            parentNavigatorKey: _rootNavigatorKey,
-            path: Routes.Login,
-            builder: (context, state) => GetBuilder(
-              init: LoginController(),
-              builder: (_) => LoginScreen(),
-            ),
-          ),
-          GoRoute(
-            parentNavigatorKey: _rootNavigatorKey,
-            path: Routes.Register,
-            builder: (context, state) => GetBuilder(
-              init: RegisterController(),
-              builder: (_) => RegisterScreen(),
+              init: MonitoringController(),
+              builder: (_) => MonitoringScreen(),
             ),
           ),
         ],

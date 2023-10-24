@@ -4,7 +4,6 @@ import 'package:flutter_hygrowmon/data/repository/repository.dart';
 import 'package:flutter_hygrowmon/main/bloc/main_bloc.dart';
 import 'package:flutter_hygrowmon/main/bloc/main_event.dart';
 import 'package:flutter_hygrowmon/main/bloc/main_state.dart';
-import 'package:flutter_hygrowmon/widgets/navbar.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 import '../firebase_options.dart';

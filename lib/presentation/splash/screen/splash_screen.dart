@@ -15,17 +15,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(
       Duration(seconds: 2),
-      () => {
-        if(controller.isFirstTime()){
-          context.go(Routes.Onboarding)
-        }else{
-          if(controller.isLogin()){
-            context.go(Routes.Dashboard)
-          }else{
-            context.go(Routes.Login)
-          }
-        }
-      },
+      () => context.go(Routes.Lahanku),
     );
 
     return Scaffold(
